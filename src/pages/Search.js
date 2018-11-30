@@ -12,9 +12,9 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 10,
     paddingRight: theme.spacing.unit * 10,
     height: 'calc(100vh - 64px)',
-    backgroundColor: theme.palette.grey[800],
+    backgroundColor: theme.palette.grey[300],
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      height: '65vh',
+      height: '50vh',
       width: '100%',
       marginLeft: 'auto',
       marginRight: 'auto',
@@ -34,7 +34,7 @@ const styles = theme => ({
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
       paddingTop: '12%',
     },
-    paddingTop: '8%',
+    paddingTop: '50%',
   },
   searchButton: {
     color: 'white',
@@ -54,7 +54,7 @@ function Search(props) {
             direction="row"
             justify="space-between"
             alignItems="center"
-            spacing="16">
+            spacing={16}>
             <Grid item md={5} xs={12}>
               <SelectDropDown/>
             </Grid>

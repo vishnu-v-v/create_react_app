@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Search from './Search';
+import Landing from './Landing'
 
 
 const styles = theme => ({
@@ -45,7 +46,8 @@ class Index extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default" className={classes.appBar}>
+        <Landing/>
+        {/* <AppBar position="static" color="default" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
               Company name
@@ -59,7 +61,7 @@ class Index extends React.Component {
           </Toolbar>
         </AppBar>
         <Search/>
-        <Category/>
+        <Category/> */}
       </div>
     );
   }
