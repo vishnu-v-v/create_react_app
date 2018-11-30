@@ -94,6 +94,9 @@ const styles = theme => ({
       width: '8em',
       height: '7em',
     }
+  },
+  cardTitle: {
+    color: 'white'
   }
 });
 
@@ -136,7 +139,12 @@ function Landing(props) {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    title="Image title"><AccessAlarm className={classes.categoryIcons}/></CardMedia>
+                    title="Image title">
+                    <AccessAlarm className={classes.categoryIcons}/>
+                    <Typography variant="h4" align="center" className={classes.cardTitle}>
+                      Title
+                    </Typography>
+                  </CardMedia>
                   <CardContent className={classes.cardContent}>
                     <Typography>
                       This is a media card. You can use this section to describe the content.
