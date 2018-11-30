@@ -20,9 +20,6 @@ const styles = theme => ({
   appBar: {
     position: 'relative',
   },
-  toolbarTitle: {
-    flex: 1,
-  },
   layout: {
     width: 'auto',
     marginLeft: theme.spacing.unit * 3,
@@ -131,8 +128,10 @@ function Category(props) {
       <main className={classes.layout}>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <div className={classes.orCircle}>OR</div>
-          <Typography component="h5" variant="h4" align="center" color="textPrimary" gutterBottom>
+          <Typography className={classes.orCircle} component="h6" variant="h6" align="center" color="textPrimary" gutterBottom>
+            OR
+          </Typography>
+          <Typography component="h5" variant="h6" align="center" color="textPrimary" gutterBottom>
             Select a Category
           </Typography>
         </div>
