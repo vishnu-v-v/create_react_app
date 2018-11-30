@@ -2,11 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot';
-import Pricing from './Pricing'
+import Category from './Category';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Search from './Search';
+
 
 const styles = theme => ({
   root: {
-    textAlign: 'center',
+    // textAlign: 'center',
+  },
+  appBar: {
+    position: 'relative',
+  },
+  toolbarTitle: {
+    flex: 1,
   },
 });
 
@@ -33,7 +45,21 @@ class Index extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Pricing/>
+        <AppBar position="static" color="default" className={classes.appBar}>
+          <Toolbar>
+            <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+              Company name
+            </Typography>
+            <Button>Features</Button>
+            <Button>Enterprise</Button>
+            <Button>Support</Button>
+            <Button color="primary" variant="outlined">
+              Login
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Search/>
+        <Category/>
       </div>
     );
   }
