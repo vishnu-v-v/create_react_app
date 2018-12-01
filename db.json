@@ -1,0 +1,27 @@
+{
+  "options": [{
+      "value": "chocolate",
+      "label": "Chocolate"
+    },
+    {
+      "value": "strawberry",
+      "label": "Strawberry"
+    },
+    {
+      "value": "vanilla",
+      "label": "Vanilla"
+    },
+    {
+      "value": "apple",
+      "label": "Apple"
+    },
+    {
+      "value": "mango",
+      "label": "Mango"
+    },
+    {
+      "value": "orange",
+      "label": "Orange"
+    }
+  ]
+}
