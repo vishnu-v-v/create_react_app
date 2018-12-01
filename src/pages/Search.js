@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Select from 'react-select';
+import Autocomplete from './Autocomplete'
 
 const styles = theme => ({
   layout: {
@@ -56,13 +56,13 @@ function Search(props) {
             alignItems="center"
             spacing={16}>
             <Grid item md={5} xs={12}>
-              <SelectDropDown/>
+              <Autocomplete/>
             </Grid>
             <Grid item md={2} xs={12}>
-              <SelectDropDown/>
+              <Autocomplete/>
             </Grid>
             <Grid item md={2} xs={12}>
-              <SelectDropDown/>
+              <Autocomplete/>
             </Grid>
             <Grid item md={3} xs={12}>
               <Button fullWidth className={classes.searchButton}>Search</Button>
@@ -72,14 +72,6 @@ function Search(props) {
       </div>
     </React.Fragment>
   );
-}
-
-function SelectDropDown(props) {
-  return (
-    <React.Fragment>
-      <Select></Select>
-    </React.Fragment>
-  )
 }
 
 Search.propTypes = {
