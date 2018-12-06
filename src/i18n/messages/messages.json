@@ -1,0 +1,17 @@
+[
+  {
+    "id": "landing.title",
+    "defaultMessage": "Company name",
+    "filepath": "src/pages/Landing.js"
+  },
+  {
+    "id": "landing.content1",
+    "defaultMessage": "This is a media card. You can use this section to describe the content.",
+    "filepath": "src/pages/Landing.js"
+  },
+  {
+    "id": "landing.footer",
+    "defaultMessage": "Something here to give the footer a purpose!",
+    "filepath": "src/pages/Landing.js"
+  }
+]
