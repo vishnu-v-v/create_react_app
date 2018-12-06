@@ -14,6 +14,23 @@ import { withStyles } from '@material-ui/core/styles';
 import Search from './Search';
 import { AccessAlarm } from '@material-ui/icons';
 
+import { injectIntl, defineMessages } from "react-intl";
+
+const messages = defineMessages({
+  title: {
+    id: 'landing.title',
+    defaultMessage: 'Company name'
+  },
+  content1: {
+    id: 'landing.content1',
+    defaultMessage: 'This is a media card. You can use this section to describe the content.'
+  },
+  footer: {
+    id: 'landing.footer',
+    defaultMessage: 'Something in the footer'
+  },
+})
+
 const styles = theme => ({
   appBar: {
     position: 'relative',
@@ -96,7 +113,7 @@ const styles = theme => ({
 const cards = [1, 2, 3, 4];
 
 function Landing(props) {
-  const { classes } = props;
+  const { classes, intl:{formatMessage} } = props;
 
   return (
     <React.Fragment>
@@ -104,11 +121,10 @@ function Landing(props) {
       <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            Company name
+            {formatMessage(messages.title)}
           </Typography>
-          <Button>Features</Button>
-          <Button>Enterprise</Button>
-          <Button>Support</Button>
+          <a href="/?locale=es"><Button>Español</Button></a>
+          <a href="/?locale=en"><Button>English</Button></a>
           <Button color="primary" variant="outlined">
             Login
           </Button>
@@ -140,7 +156,8 @@ function Landing(props) {
                   </CardMedia>
                   <CardContent className={classes.cardContent}>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {formatMessage(messages.content1)}
+                      
                       This is a media card. You can use this section to describe the content.
                     </Typography>
                   </CardContent>
@@ -156,7 +173,7 @@ function Landing(props) {
           Footer
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
+          {formatMessage(messages.footer)}
         </Typography>
       </footer>
       {/* End footer */}
@@ -168,4 +185,4 @@ Landing.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Landing);
+export default withStyles(styles)(injectIntl(Landing));
