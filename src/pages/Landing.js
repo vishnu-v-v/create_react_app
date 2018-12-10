@@ -107,7 +107,6 @@ function Landing(props) {
       <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            {formatMessage(messages.title)}
           </Typography>
             <a href={props.intl.locale === 'es' ? '/?locale=en' : '/?locale=es'}>
               <Button>
@@ -145,9 +144,6 @@ function Landing(props) {
                   </CardMedia>
                   <CardContent className={classes.cardContent}>
                     <Typography>
-                      {formatMessage(messages.content1)}
-                      
-                      This is a media card. You can use this section to describe the content.
                     </Typography>
                   </CardContent>
                 </Card>
@@ -162,7 +158,6 @@ function Landing(props) {
           Footer
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          {formatMessage(messages.footer)}
         </Typography>
       </footer>
       {/* End footer */}
