@@ -109,8 +109,11 @@ function Landing(props) {
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
             {formatMessage(messages.title)}
           </Typography>
-          <a href="/?locale=es"><Button>Español</Button></a>
-          <a href="/?locale=en"><Button>English</Button></a>
+            <a href={props.intl.locale === 'es' ? '/?locale=en' : '/?locale=es'}>
+              <Button>
+                {props.intl.locale === 'es' ? 'English' : 'Español'}
+              </Button>
+            </a>
           <Button color="primary" variant="outlined">
             Login
           </Button>
