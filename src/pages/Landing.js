@@ -16,21 +16,6 @@ import { AccessAlarm } from '@material-ui/icons';
 
 import { injectIntl, defineMessages } from "react-intl";
 
-const messages = defineMessages({
-  title: {
-    id: 'landing.title',
-    defaultMessage: 'Company name'
-  },
-  content1: {
-    id: 'landing.content1',
-    defaultMessage: 'This is a media card. You can use this section to describe the content.'
-  },
-  footer: {
-    id: 'landing.footer',
-    defaultMessage: 'Something in the footer'
-  },
-})
-
 const styles = theme => ({
   appBar: {
     position: 'relative',
@@ -114,6 +99,7 @@ const cards = [1, 2, 3, 4];
 
 function Landing(props) {
   const { classes, intl:{formatMessage} } = props;
+  const messages = props.intl.messages;
 
   return (
     <React.Fragment>
@@ -138,7 +124,7 @@ function Landing(props) {
               OR
             </Typography>
             <Typography component="h5" variant="h6" align="center" color="textPrimary" gutterBottom>
-              Select a Category
+              {messages.a}
             </Typography>
           </div>
           {/* End hero unit */}
