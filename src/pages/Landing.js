@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Search from './Search';
 import { AccessAlarm } from '@material-ui/icons';
+import { SetLocale } from '../lib/locale'
 
 import { injectIntl } from "react-intl";
 
@@ -97,13 +98,15 @@ const styles = theme => ({
 
 const cards = [1, 2, 3, 4];
 
+const ToggleLanguage = (language) => {
+  SetLocale(language);
+  window.location.reload();
+}
+
 const Landing = (props) => {
   const { classes, intl:{formatMessage} } = props;
   const messages = props.intl.messages;
   const translate_to = props.intl.locale === 'es' ? 'en' : 'es'
-  var url = window.location.toString();
-  var re = /(\?locale=es|\?locale=en)/;
-  const translator_url = re.test(url) ? url.replace(re, `?locale=${translate_to}`) : url + `?locale=${translate_to}`;
 
   return (
     <React.Fragment>
@@ -112,11 +115,9 @@ const Landing = (props) => {
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
           </Typography>
-            <a href={translator_url}>
-              <Button>
-                {props.intl.locale === 'es' ? 'English' : 'Español'}
-              </Button>
-            </a>
+          <Button onClick={() => { ToggleLanguage(translate_to) } }>
+            {props.intl.locale === 'es' ? 'English' : 'Español'}
+          </Button>
           <Button color="primary" variant="outlined">
             Login
           </Button>
