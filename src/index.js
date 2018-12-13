@@ -4,13 +4,14 @@ import Index from './pages/index';
 import { IntlProvider, addLocaleData } from "react-intl";
 import * as serviceWorker from './serviceWorker';
 import translations from "./i18n/locales"
+import { GetLocale, SetLocale } from './lib/locale'
 
 import esLocaleData from "react-intl/locale-data/es";
 
 addLocaleData(esLocaleData);
 
-// get locale from url
-const locale = window.location.search.replace("?locale=","") || "en"
+// get locale from cookie
+const locale = GetLocale() || SetLocale("en")
 const messages = translations[locale];
 
 ReactDOM.render(
