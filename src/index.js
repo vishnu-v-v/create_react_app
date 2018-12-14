@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './pages/index';
+import App from './components/App';
 import { IntlProvider, addLocaleData } from "react-intl";
 import * as serviceWorker from './serviceWorker';
 import translations from "./i18n/locales"
@@ -16,7 +16,7 @@ const messages = translations[locale];
 
 ReactDOM.render(
   <IntlProvider locale={locale} key={locale} messages={messages}>
-    <Index />
+    <App/>
   </IntlProvider>,
   document.getElementById('root')
 );
