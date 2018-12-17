@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import withRoot from '../../withRoot';
-import Landing from '../Landing'
 import Header from '../Header'
 import routes from '../../routes'
 

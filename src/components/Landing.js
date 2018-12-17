@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Search from './Search';
 import { AccessAlarm } from '@material-ui/icons';
-import { SetLocale } from '../lib/locale'
-
 import { injectIntl } from "react-intl";
 
 const styles = theme => ({
@@ -98,31 +93,13 @@ const styles = theme => ({
 
 const cards = [1, 2, 3, 4];
 
-const ToggleLanguage = (language) => {
-  SetLocale(language);
-  window.location.reload();
-}
-
 const Landing = (props) => {
-  const { classes, intl:{formatMessage} } = props;
-  const messages = props.intl.messages;
-  const translate_to = props.intl.locale === 'es' ? 'en' : 'es'
+  const { classes, intl } = props;
+  const messages = intl.messages;
 
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="static" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-          </Typography>
-          <Button onClick={() => { ToggleLanguage(translate_to) } }>
-            {props.intl.locale === 'es' ? 'English' : 'Español'}
-          </Button>
-          <Button color="primary" variant="outlined">
-            Login
-          </Button>
-        </Toolbar>
-      </AppBar>
       <main>
         <Search />
         <div className={classNames(classes.layout, classes.cardGrid)}>
