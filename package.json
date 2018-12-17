@@ -9,6 +9,7 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-foundation": "^0.9.6",
     "react-scripts": "latest"
   },
   "scripts": {
