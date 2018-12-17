@@ -6,7 +6,6 @@ import withRoot from '../../withRoot';
 import Landing from '../Landing'
 import Header from '../Header'
 import routes from '../../routes'
-import './App.scss'
 
 
 const styles = theme => ({

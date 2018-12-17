@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './components/App/App';
 import { IntlProvider, addLocaleData } from "react-intl";
+import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import translations from "./i18n/locales"
 import { GetLocale, SetLocale } from './lib/locale'
@@ -16,7 +17,9 @@ const messages = translations[locale];
 
 ReactDOM.render(
   <IntlProvider locale={locale} key={locale} messages={messages}>
-    <App/>
+    <Router>
+      <App/>
+    </Router>
   </IntlProvider>,
   document.getElementById('root')
 );
