@@ -1,25 +1,17 @@
-import {
-  AppBar,
-  Button,
-  Menu,
-  MenuItem,
-  Paper,
-  Toolbar,
-  Typography,
-  MenuList
-} from '@material-ui/core';
-import {withStyles} from '@material-ui/core/styles';
-import {
-  ArrowDropDown
-} from '@material-ui/icons';
+import { AppBar, Button, Menu, MenuItem, Paper, Toolbar, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import { ArrowDropDown } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {injectIntl} from "react-intl";
-import {SetLocale} from '../lib/locale';
+import { injectIntl } from "react-intl";
+import { SetLocale } from '../lib/locale';
 
 const styles = theme => ({
   root: {
     flexGrow: 1
+  },
+  paper: {
+    padding: 0
   },
   appBar: {
     position: 'static',
@@ -33,10 +25,56 @@ const styles = theme => ({
     fontSize: 12
   },
   toolbar: {
-    minHeight: 20
+    minHeight: 20,
+    paddingRight: 50
   },
   toolbarButtons: {
-    fontSize: 10
+    fontSize: 10,
+    textTransform: 'none'
+  },
+  accessibilityMenu: {
+    padding: 0,
+  },
+  accessibility: {
+    padding: 40,
+  },
+  accessibilityHeading: {
+    fontSize: 17,
+    color: '#767676'
+  },
+  linkToAccessibility: {
+    color: '#636363'
+  },
+  highContrast: {
+    backgroundColor: '#000',
+    color: '#ff0',
+  },
+  normalContrast: {
+    backgroundColor: '#fafafa',
+    color: '#333',
+  },
+  softContrast: {
+    backgroundColor: '#cfe5fc',
+    color: '#006',
+  },
+  contrastItem: {
+    margin: 5,
+    justifyContent: 'space-around'
+  },
+  highContrastMenuItem: {
+    '&:hover': {
+      backgroundColor: '#000'
+    }
+  },
+  normalContrastMenuItem: {
+    '&:hover': {
+      backgroundColor: '#fafafa'
+    }
+  },
+  softContrastMenuItem: {
+    '&:hover': {
+      backgroundColor: '#cfe5fc'
+    }
   }
 });
 
@@ -92,33 +130,53 @@ class Header extends React.Component {
               id="simple-menu"
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
-              onClose={this.handleClose}>
-              <Paper>
-                <MenuList>
-                  <MenuItem>
-                    <Typography variant="inherit">A short message</Typography>
-                  </MenuItem>
-                  <MenuItem>
-                    <Typography variant="inherit">A very long text that overflows</Typography>
-                  </MenuItem>
-                  <MenuItem>
-                    <Typography variant="inherit" noWrap>
-                      A very long text that overflows
+              onClose={this.handleClose}
+              dense={true}
+              className={classes.accessibilityMenu}>
+              <div className={classes.paper}>
+                <Paper className={classes.accessibility}>
+                  <Typography
+                    variant="h5"
+                    color="inherit"
+                    className={classes.accessibilityHeading}
+                    noWrap
+                  >
+                    Change Color Style:
+                  </Typography>
+                  <MenuItem className={`${classes.contrastItem} ${classes.highContrastMenuItem} ${classes.highContrast}`}>
+                    <Typography className={classes.highContrast} align="center" variant="h6">
+                      High Contrast
                     </Typography>
                   </MenuItem>
-                </MenuList>
-              </Paper>
-
-              {/* <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-              <MenuItem onClick={this.handleClose}>My account</MenuItem>
-              <MenuItem onClick={this.handleClose}>Logout</MenuItem> */}
+                  <MenuItem className={`${classes.contrastItem} ${classes.normalContrastMenuItem} ${classes.normalContrast}`}>
+                    <Typography className={classes.normalContrast} align="center" variant="h6">
+                      Normal Style
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem className={`${classes.contrastItem} ${classes.softContrastMenuItem} ${classes.softContrast}`}>
+                    <Typography className={classes.softContrast} align="center" variant="h6">
+                      Soft Contrast
+                    </Typography>
+                  </MenuItem>
+                  <Typography
+                    variant="h5"
+                    color="inherit"
+                    className={classes.accessibilityHeading}
+                    noWrap
+                  >
+                    Read more about <a className={classes.linkToAccessibility} href={'https://www.floridablue.com/general/web-accessibility'}>
+                      Web Accessibility
+                    </a>
+                  </Typography>
+                </Paper>
+              </div>
             </Menu>
             <Button
               size="small"
               className={classes.toolbarButtons}
               onClick={() => {
-              this.ToggleLanguage(translate_to)
-            }}>
+                this.ToggleLanguage(translate_to)
+              }}>
               {intl.locale === 'es'
                 ? 'English'
                 : 'Español'}
