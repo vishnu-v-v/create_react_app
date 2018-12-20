@@ -12,7 +12,7 @@ import esLocaleData from "react-intl/locale-data/es";
 addLocaleData(esLocaleData);
 
 // get locale from cookie
-const locale = GetLocale() || SetLocale("en")
+const locale = GetLocale() || SetLocale("en") || "en"
 const messages = translations[locale];
 
 ReactDOM.render(
