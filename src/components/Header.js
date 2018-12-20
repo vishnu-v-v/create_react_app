@@ -1,6 +1,5 @@
-import { AppBar, Button, Menu, MenuItem, Paper, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { ArrowDropDown } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { injectIntl } from "react-intl";
@@ -75,20 +74,42 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: '#cfe5fc'
     }
+  },
+  showAccessibilityMenu: {
+    opacity: 1,
+    maxHeight: 200
+  },
+  hideAccessibilityMenu: {
+    maxHeight: 0,
+    display: 'block',
+    overflow: 'hidden',
+    opacity: 0,
+    '-webkit-transition': 'all .3s ease',
+       '-moz-transition': 'all .3s ease',
+        '-ms-transition': 'all .3s ease',
+         '-o-transition': 'all .3s ease',
+            transition: 'all .3s ease'
   }
 });
 
 class Header extends React.Component {
   state = {
-    anchorEl: null
+    displayMenu: false
   };
 
-  handleClose = () => {
-    this.setState({anchorEl: null});
+  toggleAccessibilityDropdown = (evt) => {
+    evt.preventDefault();
+    this.setState(prevState => ({
+      displayMenu: !prevState.displayMenu
+    }), () => {
+      document.addEventListener('click', this.hideAccessibilityDropdown);
+    });
   };
 
-  handleClick = (evt) => {
-    this.setState({anchorEl: evt.currentTarget});
+  hideAccessibilityDropdown = () => {
+    this.setState({ displayMenu: false }, () => {
+      document.removeEventListener('click', this.hideAccessibilityDropdown);
+    });
   };
 
   ToggleLanguage = (language) => {
@@ -100,7 +121,6 @@ class Header extends React.Component {
 
   render() {
     const {classes, intl} = this.props;
-    const {anchorEl} = this.state;
     const translate_to = intl.locale === 'es'
       ? 'en'
       : 'es'
@@ -115,7 +135,27 @@ class Header extends React.Component {
               className={classes.toolbarTitle}>
               FloridaBlue.com
             </Typography>
-            <Button
+            <div  className="dropdown" style = {{background:"red",width:"200px"}} >
+            <div className="button" onClick={this.toggleAccessibilityDropdown}> My Setting </div>
+              <div onMouseLeave={this.hideAccessibilityDropdown} className={ this.state.displayMenu ? classes.showAccessibilityMenu : classes.hideAccessibilityMenu }>
+                {/* { this.state.displayMenu ? ( */}
+                  <ul className={ this.state.displayMenu ? classes.showAccessibilityMenu : classes.hideAccessibilityMenu }>
+                    <li><a className="active" href="#Create Page">Create Page</a></li>
+                    <li><a href="#Manage Pages">Manage Pages</a></li>
+                    <li><a href="#Create Ads">Create Ads</a></li>
+                    <li><a href="#Manage Ads">Manage Ads</a></li>
+                    <li><a href="#Activity Logs">Activity Logs</a></li>
+                    <li><a href="#Setting">Setting</a></li>
+                    <li><a href="#Log Out">Log Out</a></li>
+                  </ul>
+                  {/* ): */}
+                  {/* ( */}
+                    {/* null */}
+                  {/* ) */}
+                {/* } */}
+              </div>
+            </div>
+            {/* <Button
               size="small"
               className={classes.toolbarButtons}
               aria-owns={anchorEl
@@ -170,7 +210,7 @@ class Header extends React.Component {
                   </Typography>
                 </Paper>
               </div>
-            </Menu>
+            </Menu> */}
             <Button
               size="small"
               className={classes.toolbarButtons}
