@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { injectIntl } from "react-intl";
 import { SetLocale } from '../lib/locale';
+import { SetContrast } from '../lib/contrast';
 
 const styles = theme => ({
   root: {
@@ -119,6 +120,13 @@ class Header extends React.Component {
       .reload();
   }
 
+  ToggleContrast = (contrast) => {
+    SetContrast(contrast);
+    window
+    .location
+    .reload();
+  }
+
   render() {
     const {classes, intl} = this.props;
     const translate_to = intl.locale === 'es'
@@ -135,18 +143,53 @@ class Header extends React.Component {
               className={classes.toolbarTitle}>
               FloridaBlue.com
             </Typography>
+            <li>
+              <Button onClick={() => {
+                this.ToggleContrast('high')
+              }} size="small" className={classes.toolbarButtons}>
+                High Contrast
+              </Button>
+            </li>
+            <li>
+              <Button onClick={() => {
+                this.ToggleContrast('normal')
+              }} size="small" className={classes.toolbarButtons}>
+                Normal Contrast
+              </Button>
+            </li>
+            <li>
+              <Button onClick={() => {
+                this.ToggleContrast('low')
+              }} size="small" className={classes.toolbarButtons}>
+                Low Contrast
+              </Button>
+            </li>
             <div  className="dropdown" style = {{background:"red",width:"200px"}} >
             <div className="button" onClick={this.toggleAccessibilityDropdown}> My Setting </div>
               <div onMouseLeave={this.hideAccessibilityDropdown} className={ this.state.displayMenu ? classes.showAccessibilityMenu : classes.hideAccessibilityMenu }>
                 {/* { this.state.displayMenu ? ( */}
                   <ul className={ this.state.displayMenu ? classes.showAccessibilityMenu : classes.hideAccessibilityMenu }>
-                    <li><a className="active" href="#Create Page">Create Page</a></li>
-                    <li><a href="#Manage Pages">Manage Pages</a></li>
-                    <li><a href="#Create Ads">Create Ads</a></li>
-                    <li><a href="#Manage Ads">Manage Ads</a></li>
-                    <li><a href="#Activity Logs">Activity Logs</a></li>
-                    <li><a href="#Setting">Setting</a></li>
-                    <li><a href="#Log Out">Log Out</a></li>
+                    <li>
+                      <Button onClick={() => {
+                        this.ToggleContrast('high')
+                      }} size="small" className={classes.toolbarButtons}>
+                        High Contrast
+                      </Button>
+                    </li>
+                    <li>
+                      <Button onClick={() => {
+                        this.ToggleContrast('normal')
+                      }} size="small" className={classes.toolbarButtons}>
+                        Normal Contrast
+                      </Button>
+                    </li>
+                    <li>
+                      <Button onClick={() => {
+                        this.ToggleContrast('low')
+                      }} size="small" className={classes.toolbarButtons}>
+                        Low Contrast
+                      </Button>
+                    </li>
                   </ul>
                   {/* ): */}
                   {/* ( */}

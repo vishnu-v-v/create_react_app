@@ -107,7 +107,7 @@ const Landing = (props) => {
             <Typography className={classes.orCircle} component="h6" variant="h6" align="center" color="textPrimary" gutterBottom>
               OR
             </Typography>
-            <Typography component="h5" variant="h6" align="center" color="textPrimary" gutterBottom>
+            <Typography component="h5" variant="h6" align="center" gutterBottom>
               {messages.a}
             </Typography>
           </div>

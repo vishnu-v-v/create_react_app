@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import withRoot from '../../withRoot';
 import Header from '../Header'
 import routes from '../../routes'
+import { GetContrast, SetContrast } from '../../lib/contrast'
 
 
 const styles = theme => ({
@@ -54,6 +55,16 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+const contrast = GetContrast() || SetContrast("normal") || "normal"
+
+if (contrast === 'high') {
+  import('../../styles/highcontrast.min.css')
+  .then(() => {console.log('Loaded Highcontrast CSS')});
+} else if (contrast === 'low') {
+  import('../../styles/lowcontrast.min.css')
+  .then(() => {console.log('Loaded Lowcontrast CSS')});
 }
 
 App.propTypes = {
